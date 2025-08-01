@@ -1,28 +1,26 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:vid_loop/views/shorts_home_view.dart';
+import 'meet_home_view.dart';
 
-import '../controllers/yt_controller.dart';
-import '../custom_widgets/yt_player_widget.dart';
-
-class ShortsHomePage extends StatelessWidget {
-  const ShortsHomePage({super.key});
+class HomeView extends StatelessWidget {
+  const HomeView({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final YTController controller = Get.put(YTController());
-
-    return Obx(() {
-      if (controller.isLoading.value) {
-        return const Center(child: CircularProgressIndicator());
-      }
-
-      return PageView.builder(
-        scrollDirection: Axis.vertical,
-        itemCount: controller.videoIds.length,
-        itemBuilder: (context, index) {
-          return YTShortPlayer(videoId: controller.videoIds[index]);
-        },
-      );
-    });
+    return Scaffold(
+      body: Center(
+        child: Column(
+          spacing: 10,
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            ElevatedButton(onPressed: () => Get.to(()=>ShortsHomePage()) , child: const Text('Shorts View')),
+            ElevatedButton(onPressed: () => Get.to(()=>MeetHomeView()) , child: const Text('Meet People'))
+          ],
+        ),
+      ),
+    );
   }
 }
+

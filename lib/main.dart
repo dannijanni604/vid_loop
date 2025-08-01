@@ -16,9 +16,10 @@ class YouTubeShortsApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
-      title: 'YouTube Shorts Viewer',
       theme: ThemeData.dark(),
-      home: const ShortsHomePage(),
+      debugShowCheckedModeBanner: false,
+      title: 'VDO APP',
+      home: const HomeView(),
     );
   }
 }
